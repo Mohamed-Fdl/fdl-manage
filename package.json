@@ -1,0 +1,23 @@
+{
+    "name": "fdl-manage",
+    "version": "1.0.0",
+    "description": "A project for managing your clients",
+    "main": "server.js",
+    "scripts": {
+        "start": "nodemon server.js",
+        "test": "echo \"Error: no test specified\" && exit 1"
+    },
+    "author": "fdlcode",
+    "license": "ISC",
+    "dependencies": {
+        "body-parser": "^1.19.2",
+        "ejs": "^3.0.2",
+        "express": "^4.17.3",
+        "express-session": "^1.17.2",
+        "joi": "^17.6.0",
+        "mongoose": "^6.3.0"
+    },
+    "devDependencies": {
+        "nodemon": "^2.0.15"
+    }
+}
