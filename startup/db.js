@@ -1,8 +1,12 @@
-const mongoose = require('mongoose');
+require('dotenv').config()
+
+const mongoose = require('mongoose')
 
 module.exports = function() {
 
-    mongoose.connect('mongodb://localhost:27017/fdl-manage')
-        .then(console.log('Connected to mongoDB '))
+    mongoose.set('strictQuery', false)
+
+    mongoose.connect(process.env.DB_CONNECT)
+        .then(console.log('Connected to database '))
         .catch(error => console.log(error))
 }

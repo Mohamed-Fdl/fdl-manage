@@ -8,6 +8,11 @@ router.get('/addPlan', function(req, res) {
     res.render('addPlan');
 });
 
+router.get('/plans', async function(req, res) {
+    const plans = await Plan.find({});
+    res.render('seePlans', { plans });
+});
+
 
 router.post('/addPlan', async function(req, res) {
 
@@ -26,12 +31,6 @@ router.post('/addPlan', async function(req, res) {
         res.redirect('/addPlan')
 
     }
-});
-
-
-router.get('/seePlans', async function(req, res) {
-    const plans = await Plan.find({});
-    res.render('plans', { plans });
 });
 
 
@@ -67,7 +66,7 @@ router.post('/editPlan/:id', async function(req, res) {
         })
 
         req.flash('success', `Plan ${req.body.name} updated successfully!!`)
-        res.redirect('/seePlans')
+        res.redirect('/plans')
     }
 
 });
@@ -79,7 +78,7 @@ router.get('/deletePlan/:id', async function(req, res) {
         return
     }
     await Plan.findByIdAndRemove(req.params.id)
-    res.redirect('/seePlans')
+    res.redirect('/plans')
 })
 
 module.exports = router

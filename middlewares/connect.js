@@ -1,7 +1,12 @@
 module.exports = function(request, response, next) {
-    if (request.session.connexion && request.session.connexion.status === true) {
+    //console.log(request.url)
+    if (request.url === '/login') {
         next()
     } else {
-        response.redirect('/login')
+        if (request.session.connexion && request.session.connexion.status === true) {
+            next()
+        } else {
+            response.redirect('/login')
+        }
     }
 }

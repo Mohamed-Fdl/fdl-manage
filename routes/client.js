@@ -34,12 +34,11 @@ router.post('/addClient', async function(req, res) {
         await plan.save()
 
 
-        req.flash('success', `The user  ${req.body.name} created successfully!!`)
+        req.flash('success', `User  ${req.body.name} created successfully!!`)
         res.redirect('/addClient')
 
     }
 });
-
 
 router.get('/seeClients', async function(req, res) {
     const clients = await Client.find({}).populate('plan');
@@ -52,7 +51,18 @@ router.get('/deleteClient/:id', async function(req, res) {
         res.send('Not found')
         return
     }
-    await Client.findByIdAndRemove(req.params.id)
+
+    //await Client.findByIdAndRemove(req.params.id)
+    let client = await Client.findByIdAndDelete(req.params.id)
+
+    let plan = await Plan.findById(client.plan)
+
+    let index = plan.registered.indexOf(client.id)
+
+    plan.registered.splice(index, 1)
+
+    await plan.save()
+
     res.redirect('/seeClients')
 })
 

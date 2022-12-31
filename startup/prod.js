@@ -23,4 +23,6 @@ module.exports = function(app) {
     }))
 
     app.use(require('../middlewares/flash'))
+
+    app.use(require('../middlewares/connect'))
 }

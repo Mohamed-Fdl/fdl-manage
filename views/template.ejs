@@ -88,7 +88,7 @@
                             <span class="menu-arrow arrow_carrot-right"></span>
                         </a>
                         <ul class="sub">
-                            <li><a class="" href="/seePlans">See all</a></li>
+                            <li><a class="" href="/plans">See all</a></li>
                             <li><a class="" href="/addPlan"><span>Add new</span></a></li>
                         </ul>
                     </li>
@@ -113,6 +113,21 @@
                                 </i>Home</li>
                         </ol>
                     </div>
+
+                    <section class="panel">
+                        <div class="panel-body">
+                            <% if (locals.flash && locals.flash.error) { %>
+                                <div class="alert alert-primary mt-3" role="alert">
+                                    <%= locals.flash.error %>
+                                </div>
+                                <% } %>
+                                    <% if (locals.flash && locals.flash.success) { %>
+                                        <div class="alert alert-primary mt-3" role="alert">
+                                            <%= locals.flash.success %>
+                                        </div>
+                                        <% } %>
+                        </div>
+                    </section>
                 </div>
             </section>
         </section>
